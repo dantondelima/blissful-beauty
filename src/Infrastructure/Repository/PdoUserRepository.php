@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Infrastructure\Repository;
@@ -33,7 +34,7 @@ class PdoUserRepository implements UserRepositoryInterface
                 $user['name']
             );
         }
-        
+
         return $userList;
     }
 
@@ -47,7 +48,7 @@ class PdoUserRepository implements UserRepositoryInterface
         $success = $stmt->execute();
 
         if ($success) {
-           $user->setId($this->connection->lastInsertId()); 
+            $user->setId((int) $this->connection->lastInsertId());
         }
 
         return $success;
@@ -60,7 +61,7 @@ class PdoUserRepository implements UserRepositoryInterface
         $sqlDelete = "DELETE FROM users WHERE id = :id";
         $stmt = $this->connection->prepare($sqlDelete);
         $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
-        
+
         return $stmt->execute();
     }
 }

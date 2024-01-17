@@ -15,8 +15,6 @@ $createTablesSql = '
     CREATE TABLE IF NOT EXISTS staff_members (
         id INTEGER PRIMARY KEY,
         name TEXT,
-        check_in_time TEXT,
-        check_out_time TEXT,
         is_fired DEFAULT 0
     );
     
