@@ -43,7 +43,7 @@ class Customer
 
     public function document(): string
     {
-        return $this->document();
+        return $this->document;
     }
 
     public function isBanned(): bool

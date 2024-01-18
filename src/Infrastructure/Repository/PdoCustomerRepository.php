@@ -44,10 +44,10 @@ class PdoCustomerRepository implements CustomerRepositoryInterface
 
     public function insert(Customer $customer): bool
     {
-        $sqlInsert = "INSERT INTO customer (name, birth_date, document) VALUES (:name, :birth_date, :document);";
+        $sqlInsert = "INSERT INTO customers (name, birth_date, document) VALUES (:name, :birth_date, :document);";
         $stmt = $this->connection->prepare($sqlInsert);
         $stmt->bindValue(':name', $customer->name());
-        $stmt->bindValue(':birth_date', $customer->birthDate());
+        $stmt->bindValue(':birth_date', $customer->birthDate()->format('Y-m-d'));
         $stmt->bindValue(':document', $customer->document());
         $success = $stmt->execute();
 
@@ -60,7 +60,7 @@ class PdoCustomerRepository implements CustomerRepositoryInterface
 
     public function banCustomer(Customer $customer): bool
     {
-        $sqlBanCustomer = "UPDATE customer SET is_banned = :is_banned WHERE id = :id;";
+        $sqlBanCustomer = "UPDATE customers SET is_banned = :is_banned WHERE id = :id;";
         $stmt = $this->connection->prepare($sqlBanCustomer);
         $stmt->bindValue(':is_banned', 1);
         $stmt->bindValue(':id', $customer->id());
