@@ -38,6 +38,7 @@ $createTablesSql = '
 
     CREATE TABLE IF NOT EXISTS customers (
         id INTEGER PRIMARY KEY,
+        name TEXT,
         birth_date TEXT,
         document TEXT,
         is_banned INTEGER DEFAULT 0
