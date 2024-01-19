@@ -23,7 +23,7 @@ $createTablesSql = '
         name TEXT,
         price_in_cents INTEGER,
         duration_minutes INTEGER,
-        is_active INTEGER,
+        is_active INTEGER DEFAULT 1,
         member_id INTERGER,
         FOREIGN KEY(member_id) REFERENCES staff_members(id)
     );
