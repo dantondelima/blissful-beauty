@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Repository;
 
-use App\Domain\Model\Service;
+use App\Domain\Model\Service\Service;
 use App\Domain\Repository\ServiceRepositoryInterface;
 use PDO;
 use PDOStatement;

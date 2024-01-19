@@ -2,8 +2,7 @@
 
 namespace App\Domain\Repository;
 
-use App\Domain\Model\Service;
-use App\Domain\Model\StaffMember;
+use App\Domain\Model\Service\Service;
 use App\Infrastructure\Repository\PdoStaffMemberRepository;
 use PDO;
 

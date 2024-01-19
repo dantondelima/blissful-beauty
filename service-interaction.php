@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\Model\Service;
+use App\Domain\Model\Service\Service;
 use App\Domain\Model\StaffMember;
 use App\Infrastructure\Database\ConnectionCreator;
 use App\Infrastructure\Repository\PdoServiceRepository;
