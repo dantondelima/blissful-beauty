@@ -23,6 +23,16 @@ class PdoStaffMemberRepository implements StaffMemberRepositoryInterface
         return $this->hydrateMembersList($stmt);
     }
 
+    public function getMember(int $id): StaffMember
+    {
+        $query = 'SELECT * FROM staff_members WHERE id = :id;';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $this->hydrateMembersList($stmt)[0];
+    }
+
     private function hydrateMembersList(PDOStatement $stmt): array
     {
         $membersDataList = $stmt->fetchAll();
