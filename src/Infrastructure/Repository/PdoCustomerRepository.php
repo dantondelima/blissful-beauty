@@ -24,6 +24,17 @@ class PdoCustomerRepository implements CustomerRepositoryInterface
         return $this->hydrateCustomersList($stmt);
     }
 
+    public function getCustomer(int $id): Customer
+    {
+        $query = 'SELECT * FROM customers WHERE id = :id;';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $this->hydrateCustomersList($stmt)[0];
+    }
+    
+
     private function hydrateCustomersList(PDOStatement $stmt): array
     {
         $customersDataList = $stmt->fetchAll();
