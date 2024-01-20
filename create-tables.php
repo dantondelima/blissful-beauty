@@ -28,10 +28,10 @@ $createTablesSql = '
         FOREIGN KEY(member_id) REFERENCES staff_members(id)
     );
 
-    CREATE TABLE IF NOT EXISTS schedule (
+    CREATE TABLE IF NOT EXISTS schedules (
         id INTEGER PRIMARY KEY,
         date TEXT,
-        is_free INTEGER DEFAULT 1,
+        is_taken INTEGER DEFAULT 0,
         service_id INTEGER,
         FOREIGN KEY(service_id) REFERENCES services(id)
     );

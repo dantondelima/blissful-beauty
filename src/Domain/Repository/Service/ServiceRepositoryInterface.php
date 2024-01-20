@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Repository;
+namespace App\Domain\Repository\Service;
 
 use App\Domain\Model\Service\Service;
 use App\Infrastructure\Repository\PdoStaffMemberRepository;
