@@ -1,2 +1,2 @@
 # blissful-beauty
-Sistema de gerenciamento de cliente, serviços e agendamentos.
+Sistema de gerenciamento de cliente, serviços e agendamentos utilizando PDO ✔️.
