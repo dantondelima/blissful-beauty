@@ -26,6 +26,16 @@ class PdoScheduleRepository implements ScheduleRepositoryInterface
         return $this->hydrateSchedulesList($stmt, $pdoServiceRepository, $pdoStaffMemberRepository);
     }
 
+    public function getSchedule(int $id, PdoServiceRepository $pdoServiceRepository, PdoStaffMemberRepository $pdoStaffMemberRepository): Schedule
+    {
+        $query = 'SELECT * FROM schedules WHERE id = :id;';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $this->hydrateSchedulesList($stmt, $pdoServiceRepository, $pdoStaffMemberRepository)[0];
+    }
+
     public function insert(Schedule $schedule): bool
     {
         $serviceId = $schedule->service()->id();

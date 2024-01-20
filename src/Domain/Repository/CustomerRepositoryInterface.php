@@ -9,6 +9,7 @@ interface CustomerRepositoryInterface
 {
     public function __construct(PDO $pdo);
     public function allCustomers(): array;
+    public function getCustomer(int $id): Customer;
     public function insert(Customer $customer): bool;
     public function banCustomer(Customer $customer): bool;
 }
