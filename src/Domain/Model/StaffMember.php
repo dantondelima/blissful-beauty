@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Domain\Model;
 
-use DateTimeImmutable;
-
 class StaffMember
 {
     public function __construct(private ?int $id, private string $name, private ?bool $isFired = false)
