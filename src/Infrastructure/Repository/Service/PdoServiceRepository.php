@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace App\Infrastructure\Repository;
+namespace App\Infrastructure\Repository\Service;
 
-use App\Domain\Model\Service\Service;
-use App\Domain\Repository\Service\ServiceRepositoryInterface;
 use PDO;
 use PDOStatement;
+use App\Domain\Model\Service\Service;
+use App\Infrastructure\Repository\PdoStaffMemberRepository;
+use App\Domain\Repository\Service\ServiceRepositoryInterface;
 
 class PdoServiceRepository implements ServiceRepositoryInterface
 {
@@ -21,6 +22,16 @@ class PdoServiceRepository implements ServiceRepositoryInterface
         $stmt = $this->connection->query($query);
 
         return $this->hydrateServicesList($stmt, $pdoStaffMemberRepository);
+    }
+
+    public function getService(int $id, PdoStaffMemberRepository $pdoStaffMemberRepository): Service
+    {
+        $query = 'SELECT * FROM services WHERE id = :id;';
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+
+        return $this->hydrateServicesList($stmt, $pdoStaffMemberRepository)[0];
     }
 
     public function insert(Service $service): bool
